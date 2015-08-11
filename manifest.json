@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "DMM",
+    "version": "0.0.1",
+    "background": {
+        "persistent": true,
+        "scripts": ["dmm.js"]
+    },
+    "permissions": [
+        "cookies",
+        "webRequest",
+        "webRequestBlocking",
+        "*://*.dmm.com/*"
+    ]
+}
