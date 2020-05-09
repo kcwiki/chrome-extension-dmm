@@ -1,20 +1,16 @@
+# `chrome-extension-dmm`
 
-Chrome extension for bypassing the area error on [DMM](http://www.dmm.com).
+Chrome extension for bypassing area errors on [DMM](https://www.dmm.com/).
 
-# Usage
+The following area errors are handled:
 
-* Clear DMM cookies (`Settings` -> `Content settings...` -> `All cookies and site data...` -> search for `dmm` -> `Remove all shown`) and don't touch them with other extensions (e.g. disable EditThisCookie).
-* Drop this folder (`DMM-master`, extract it from [ZIP](https://github.com/gakada/DMM/archive/master.zip) file) to Extensions tab ([chrome://extensions/](chrome://extensions/), you can also use `Load unpacked extension...` button here, make sure `Developer mode` is checked), you should see a new extension enabled (DMM 0.0.1).
-* Open [http://www.dmm.com](http://www.dmm.com), choose Japanese language and login.
+- General DMM cookie-based area restriction is fixed by changing (`webRequest.onBeforeSendHeaders`) relevant cookie value.
+- KanColle gadget server area restriction is fixed by redirecting (`webRequest.onBeforeRequest`) gadget server requests to a third party [cache](https://github.com/kcwiki/cache), so it works like a CDN via GitHub pages (Fastly network).
 
-# Troubleshooting
+## Installation
 
-If you still have problems:
-
-* Create a new directory.
-* Execute `"full/path/to/chrome.exe" --user-data-dir="full/path/to/new/directory"`.
-* Follow Usage section (no need to clear DMM cookies).
-* Open [Network](https://developers.google.com/web/tools/setup/workspace/setup-devtools#network-panel-monitor-network-performance) panel.
-* Visit a page and have the area error.
-* Copy [HTTP headers](https://developers.google.com/web/tools/profile-performance/network-performance/resource-loading#http-headers) for every request until `http://www.dmm.com/top/-/error/area/`.
-* Report it with these headers (make sure there is no API token, just in case).
+- Open Extensions tab ([chrome://extensions](chrome://extensions))
+- Make sure `Developer mode` is enabled
+- Load this folder (extracted from [ZIP file](https://github.com/kcwiki/chrome-extension-dmm/archive/master.zip)) by dropping it there or using `Load unpacked` button
+- You should see a new extension enabled (DMM 0.0.2)
+- Loading, e.g., [KanColle](http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/) should work now.
